@@ -5,3 +5,7 @@ export * from "./title/title";
 export * from "./container/container";
 export * from "./button/button";
 export * from "./link-item/linkItem";
+export * from "./badge/badge";
+export * from "./number-ticker/number-ticker";
+export * from "./sheet/sheet";
+export * from "./scroll-area/scroll-area";

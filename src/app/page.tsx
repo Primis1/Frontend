@@ -1,5 +1,5 @@
-import { Header } from "@/widgets/ui";
+import { Button } from "@/shared/ui";
 
 export default function Home() {
-  return <></>;
+  return <><Button variant={"destructive"}>IDK</Button></>;
 }

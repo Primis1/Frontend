@@ -3,11 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/widgets/ui";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+import { cn } from "@/lib/utils";
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -28,10 +24,13 @@ export default function RootLayout({
     <html lang="en">
       <UserProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={cn(
+            "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
+            geistMono.variable
+          )}
         >
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
         </body>
       </UserProvider>
     </html>
