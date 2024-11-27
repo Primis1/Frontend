@@ -25,7 +25,7 @@ export default function RootLayout({
       <UserProvider>
         <body
           className={cn(
-            "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
+            "relative flex min-h-screen w-full flex-col justify-center items-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
             geistMono.variable
           )}
         >

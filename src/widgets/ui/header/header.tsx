@@ -2,10 +2,11 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { MainNav } from "@/entities/ui/main-nav/mainNav";
-import { Button, buttonVariants, NumberTicker } from "@/shared/ui";
+import { buttonVariants, NumberTicker } from "@/shared/ui";
 import { Github, StarIcon, Twitter } from "lucide-react";
 import { siteConfig } from "@/shared/configs";
 import { MobileNav } from "@/entities";
+import { AccountDropdown } from "@/entities/ui/accout-dropdown/account-dropdown";
 
 export const Header = async () => {
   let stars: number = 0; // Default value
@@ -31,16 +32,19 @@ export const Header = async () => {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg"
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full flex justify-center bg-background/40 backdrop-blur-lg"
       )}
     >
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-16 items-center justify-between">
         <MainNav />
         <MobileNav />
 
         <div className="flex items-center justify-between gap-2 md:justify-end">
           <Link
-            className={cn("hidden md:inline-flex")}
+            className={cn(
+              "hidden md:inline-flex",
+              buttonVariants({ variant: "default" })
+            )}
             target="_blank"
             href={siteConfig.links.github}
           >
@@ -96,12 +100,18 @@ export const Header = async () => {
           </nav>
 
           <nav>
-            <a href="api/auth/login">Login</a>
-            <a href="api/auth/logout">Logout</a>
+            <a
+              className={cn(buttonVariants({ variant: "ghost" }))}
+              href="api/auth/login"
+            >
+              Login
+            </a>
           </nav>
+
+          <AccountDropdown />
         </div>
       </div>
-      <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
+      {/* <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" /> */}
     </header>
   );
 };
